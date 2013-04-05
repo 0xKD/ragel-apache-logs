@@ -1,0 +1,6 @@
+*.c
+
+log*
+parser
+debugger
+*.png
