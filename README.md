@@ -1,6 +1,5 @@
-ragel-apache-logs
+Nginx-log-parser
 =================
 
-A sample project using Ragel to generate a tokenizer for Apache log files
+Experimental fork of [ragel-apache-logs](https://github.com/emcien/ragel-apache-logs) for nginx access logs. Work in progress.
 
-This project is a companion to an [Emcien engineering blog](https://engineering.emcien.com/2013/04/5-building-tokenizers-with-ragel) post. Feel free to read the comments in the code here (parser.rl is a good starting point), but you may find it easier to follow along with the blog post.
