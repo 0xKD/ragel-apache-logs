@@ -1,6 +1,1 @@
-*.c
-
-log*
-parser
-debugger
-*.png
+*.swp
