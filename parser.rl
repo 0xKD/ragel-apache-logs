@@ -37,16 +37,18 @@ static void inline save_size(struct Log *log) { log->size = ts; }
 static void inline save_referer(struct Log *log) { log->referer = ts; }
 static void inline save_useragent(struct Log *log) { log->useragent = ts; }
 
-static void print_log(struct Log *log) {
-	printf("IP: %s | ", log->ip);
-	printf("Date: %s | ", log->date);
-	printf("Request: %s | ", log->request);
-	printf("Status: %s | ", log->status);
-	printf("User-agent: %s\n", log->useragent);
+static void print_log(struct Log *log, int isFirst) {
+	if (!isFirst) {
+		printf(",");
+	}
+	printf("{\"ip\":\"%s\",\"date\":\"%s\",\"status\":\"%s\",\"request\":\"%s\"}",
+		log->ip, log->date, log->status, log->request);
 }
 
 int main(int argc, char **argv) {
 	struct Log *myLog = malloc(sizeof(struct Log));
+	printf("[");
+	int isFirst = 1;
 	while (fgets(inbuffer, MAX_LINE_LENGTH, stdin) != NULL) {
 		p = inbuffer;
 		pe = inbuffer + strlen(inbuffer);
@@ -56,9 +58,10 @@ int main(int argc, char **argv) {
 			write init;
 			write exec;
 		}%%
-		// printf("result: %i\n", cs >= parser_first_final);
-		// print_log(myLog);
+		print_log(myLog, isFirst);
+		isFirst = 0;
 	}
+	printf("]");
 	return 0;
 }
 
